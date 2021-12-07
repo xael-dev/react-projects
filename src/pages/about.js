@@ -4,11 +4,11 @@ export const About = () => {
     return (
         <div style={{
             display: 'flex',
-            justifyContent: 'Right',
+            justifyContent: 'Center',
             alignItems: 'Right',
             heigt: '100vh',
         }}>
-            <h1>Loan Calculator</h1>
+            <h1>About</h1>
         </div>
     );
 }
