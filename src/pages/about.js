@@ -2,11 +2,11 @@ import React from 'react';
 
 export const About = () => {
     return (
-        <div style={{
+        //define JSX element styles as an object
+        <div style={{ 
             display: 'flex',
             justifyContent: 'Center',
-            alignItems: 'Right',
-            heigt: '100vh',
+            height: '100vh',
         }}>
             <h1>About</h1>
         </div>
