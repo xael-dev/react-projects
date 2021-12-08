@@ -7,21 +7,21 @@ const Navbar = () => {
             <Nav>
                 <Bars />
                 <NavMenu>
-                    <NavLink to='/' activeStyle>
+                    <NavLink to='/' activestyle='true'>
                         Home
                     </NavLink>
-                    <NavLink to='/about' activeStyle>
+                    <NavLink to='/about' activestyle='true'>
                         About
                     </NavLink>
-                    <NavLink to='/blog' activeStyle>
+                    <NavLink to='/blog' activestyle='true'>
                         Blog
                     </NavLink>
-                    <NavLink to='/loancalc' activeStyle>
+                    <NavLink to='/loancalc' activestyle='true'>
                         Calculator
                     </NavLink>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+                    <NavBtnLink to='/signup'>Sign Up</NavBtnLink>
                 </NavBtn>
             </Nav>
         </>
