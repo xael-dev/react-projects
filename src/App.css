@@ -1,5 +1,7 @@
-.App {
-  text-align: center;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  min-width: auto;
 }
 
 .align-center {
@@ -8,13 +10,16 @@
   text-align: center;
 }
 
-.form-text {
-  text-align: left;
+.form-text-required-indicator {
+  color: #12263A;
 }
 
-input[type=text]{
+input[type=number]{
   padding: 10px;
   margin: 10px 0;
+  border:0;
+  border-radius: 10px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
 
