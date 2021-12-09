@@ -1,57 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Card from '@mui/material/Card';
 
-class Calc extends React.Component {
-    constructor(props) {
-        super(props)
-        this.handleInput = this.handleInput.bind(this);
-        this.handleClick = this.handleSubmit.bind(this);
-    }
+export default function Calc() {
+    //declare variables for present value of an ordinary annuity for our state management
+    //going to assume compounding occurs at the same rate/month with consistent payments
+    const [loanAmount, setLoanAmount] = useState(0);
+    const [interestRate, setInterestRate] = useState(0);
+    const [numMonths, setNumMonths] = useState(0);
+    const [annuity, setAnnuity] = useState(0);
 
-    handleInput(event) {
-        event.preventDefault()
-        console.log(event.target.value)
-    }
-
-    handleSubmit(event) {
-        alert(`Amount is confirmed!: ${this.state.value}`);
+    function calculateLoan(event) {
         event.preventDefault();
+        const formValid = loanAmount >= 0 && interestRate >= 0 && numMonths >= 0;
+        if (!formValid) {
+            return;
+        } else {
+            const loanCalculation = (loanAmount * (1 + interestRate / 100) / numMonths);
+            setAnnuity(Math.round(100 * loanCalculation) / 100);
+        }
     }
 
-    render() {
-        return (
-            //define JSX element styles as an object
-            //Considering using controlled components here for handling form state 'react.org/forms.html'
-            <div
-                className='row'
-                style={{
-                    display: 'flex',
-                    justifyContent: 'Center'
-                }}>
-                <div className='column'>
-                    <div className='form-container'>
-                        <form onSubmit={this.handleSubmit}>
-                            <fieldset className='align-center'>
-                                <label className="form-text" htmlFor="">Money you are looking to borrow</label><br />
-                                <input type="text" name='' onInput={this.handleInput} /><br />
-                                <label className="form-text" htmlFor="">Where are you located</label><br />
-                                <input type="dropdown" name='' /><br />
-                                <label className="form-text" htmlFor="">Loan term?</label><br />
-                                <input type="text" name='' /><br />
-                                <label className="form-text" htmlFor="">LTV</label><br />
-                                <input type="text" name='' /><br />
-                                <label className="form-text" htmlFor="">Repayment Type</label><br />
-                                <input type="text" name='' /><br />
-                                <button className="align-center" onClick={this.handleClick}>Calculate</button>
-                            </fieldset>
+    return (
+        //define JSX element styles as an object (Personal note)
+        //Considering using useState() here for handling form state
+        //TODO: Handle negative inputs from form fields.
+        <div
+            className='row'
+            style={{
+                display: 'flex',
+                justifyContent: 'Center'
+            }}>
+            <div className='column'>
+                <div className='form-container'>
+                    <Card variant='outlined'>
+                        <form className='align-center' onSubmit={calculateLoan}>
+                                <label className="form-text" htmlFor="loanAmount">Money you are looking to borrow</label><br />
+                                <input type="number" name='loanAmount' value={loanAmount} onChange={(event) => setLoanAmount(event.target.value)} /><br />
+
+                                <label className="form-text" htmlFor="loanTerm">Loan term?</label><br />
+                                <input type="number" name='loanTerm' value={numMonths} onChange={(event) => setNumMonths(event.target.value)} /><br />
+
+                                <label className="form-text" htmlFor="interestRate">Interest Rate</label><br />
+                                <input type="number" name='interestRate' value={interestRate} onChange={(event) => setInterestRate(event.target.value)} /><br />
+                                
+                                <button>Calculate</button>
                         </form>
-                    </div>
-                </div>
-                <div className='column'>
-                    <h1>Div2</h1>
+                    </Card>
                 </div>
             </div>
-        )
-    }
-}
 
-export default Calc;
+            <div className='column align-center'>
+                <h2>You are looking to get: ${loanAmount}</h2><br />
+                <h2>Looking to pay off in: {numMonths}</h2><br />
+                <h2>With: {interestRate}% in interest</h2><br />
+                <h2>Your monthly payment will be ${annuity} per month</h2><br />
+            </div>
+        </div>
+    )
+}
