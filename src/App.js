@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Calc from './pages/calc';
 import { Home } from './pages/home';
 import { About } from './pages/about';
 import { Blogs } from './pages/blog';
-import Calc from './pages/calc';
 import { SignUp } from './pages/signup';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
     return (
