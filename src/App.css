@@ -22,6 +22,15 @@ input[type=number]{
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
+.glass-background {
+  background: rgba(255, 255, 255, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 
 /* We'll use flexbox since I10 is axed */
 .row {
