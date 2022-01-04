@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import './calc.css';
 
 export default function Calc() {
     //declare variables for present value of an ordinary annuity for our state management
