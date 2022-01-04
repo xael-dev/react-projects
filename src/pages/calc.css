@@ -1,0 +1,80 @@
+.calculator-heading {
+  font-family: "Roboto";
+  text-align: center;
+  padding: 2vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.align-center {
+  display: block;
+  margin: 1.0em auto;
+  text-align: center;
+}
+
+.form-text {
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.form-text-required-indicator {
+  color: #f27474;
+}
+
+.form-input {
+  font-family: "Roboto";
+  font-size: 1rem;
+  
+  width: 80%;
+  padding-bottom: 10px;
+  margin: 10px 0;
+  border:0;
+  border-radius: 10px;
+
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus{
+  border-color: #58a6ff;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+
+.glass-background {
+  background: rgba(255, 255, 255, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* We'll use flexbox since I10 is axed */
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+/* Remove number spinner from Chrome, Edge, Safari, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+  /* Remove spinner from Firefox */
+  -moz-appearance: textfield;
+}
