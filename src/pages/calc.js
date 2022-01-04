@@ -25,37 +25,44 @@ export default function Calc() {
         //define JSX element styles as an object (Personal note)
         //Considering using useState() here for handling form state
         //TODO: Handle negative inputs from form fields.
-        <div
-            className='row'
-            style={{
-                display: 'flex',
-                justifyContent: 'Center'
-            }}>
-            <div className='column'>
-                <div className='form-container'>
-                    <Card variant='outlined'>
+        <>
+            <h1 className="calculator-heading">Calculator</h1>
+            <div
+                className='row'
+                style={{
+                    display: 'flex',
+                    justifyContent: 'Center',
+                    position: 'relative',
+                }}>
+                <div className='column'>
+                    <div className='form-container glass-background'>
                         <form className='align-center' onSubmit={calculateLoan}>
-                                <label className="form-text" htmlFor="loanAmount">Money you are looking to borrow</label><br />
-                                <input type="number" name='loanAmount' value={loanAmount} onChange={(event) => setLoanAmount(event.target.value)} /><br />
+                            <label className="form-text" htmlFor="loanAmount">Money you are looking to borrow</label>
+                            <span className="form-text-required-indicator"> * </span><br />
+                            <input className="form-input" type="number" name='loanAmount' value={loanAmount} onChange={(event) => setLoanAmount(event.target.value)} /><br  />
 
-                                <label className="form-text" htmlFor="loanTerm">Loan term?</label><br />
-                                <input type="number" name='loanTerm' value={numMonths} onChange={(event) => setNumMonths(event.target.value)} /><br />
+                            <label className="form-text" htmlFor="loanTerm">Loan term?</label>
+                            <span className="form-text-required-indicator"> * </span><br />
+                            <input className="form-input" type="number" name='loanTerm' value={numMonths} onChange={(event) => setNumMonths(event.target.value)} /><br />
 
-                                <label className="form-text" htmlFor="interestRate">Interest Rate</label><br />
-                                <input type="number" name='interestRate' value={interestRate} onChange={(event) => setInterestRate(event.target.value)} /><br />
-                                
-                                <button>Calculate</button>
-                        </form>
-                    </Card>
+                            <label className="form-text" htmlFor="interestRate">Interest Rate</label>
+                            <span className="form-text-required-indicator"> * </span><br />
+                            <input className="form-input" type="number" name='interestRate' value={interestRate} onChange={(event) => setInterestRate(event.target.value)} /><br />
+                                    
+                                    <Button variant="contained">Calculate</Button>
+                            </form>
+                    </div>
+                </div>
+
+                <div className='column align-center'>
+                    <div className="row glass-background">
+                        <h2>PV: ${loanAmount}</h2><br />
+                        <h2>{numMonths} Months </h2><br />
+                        <h2>{interestRate}% Interest Rate</h2><br />
+                        <h2>Your monthly payment will be ${annuity} per month</h2><br />
+                    </div>
                 </div>
             </div>
-
-            <div className='column align-center'>
-                <h2>You are looking to get: ${loanAmount}</h2><br />
-                <h2>Looking to pay off in: {numMonths}</h2><br />
-                <h2>With: {interestRate}% in interest</h2><br />
-                <h2>Your monthly payment will be ${annuity} per month</h2><br />
-            </div>
-        </div>
+        </>
     )
 }
